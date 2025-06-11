@@ -1,0 +1,452 @@
+/* General Body and Header Styles (from previous request, ensure they are present) */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10%;
+    box-sizing: border-box;
+    position: relative; /* For progress bar positioning */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2; /* Ensure logo is above progress bar */
+}
+
+.logo img {
+    height: 30px;
+    margin-right: 5px;
+}
+
+.logo p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Progress Bar Styles */
+.progress-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #e0e0e0; /* Gray background for the bar */
+    z-index: 1; /* Below the logo */
+}
+
+.progress-bar-line {
+    /* This can be used for a static background line if progress-bar-container is the fill */
+    /* Or, if progress-bar-container is the background, this div isn't strictly needed for the line */
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #ffda47; /* Yellow fill for progress */
+    width: 0; /* Will be set by JS or inline style */
+    transition: width 0.5s ease-in-out;
+}
+
+
+/* Main Container for Order Selection Page */
+.order-selection-container {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-top: 50px;
+    max-width: 1000px;
+    width: 90%;
+    min-height: 650px; /* Adjust height as needed */
+}
+
+.selection-options {
+    flex: 2; /* Takes more space */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.selection-header {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.selection-header h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.selection-header p {
+    font-size: 16px;
+    color: #777;
+    line-height: 1.5;
+}
+
+.order-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    position: relative; /* For button positioning */
+}
+
+.order-card:hover {
+    border-color: #007bff; /* Blue border on hover */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
+}
+
+.order-card.selected {
+    border-color: #007bff; /* Blue border when selected */
+    background-color: #e6f0ff; /* Light blue background when selected */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.15);
+}
+
+.card-icon {
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    width: 50px;
+    height: 50px;
+    background-color: #f0f8ff; /* Light background for icon area */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    color: #007bff; /* Icon color */
+    font-size: 24px;
+}
+
+/* Specific icon styles for better visual resemblance if SVGs are not used */
+.card-icon .fa-pencil-alt { color: #007bff; }
+.card-icon .fa-edit { color: #007bff; }
+.card-icon .fa-code { color: #007bff; }
+
+
+.card-content {
+    flex-grow: 1; /* Allows content to take available space */
+}
+
+.card-content h4 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.select-button {
+    background-color: #007bff; /* Blue button */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.select-button:hover {
+    background-color: #0056b3;
+}
+
+.select-button.selected-button {
+    background-color: #e0e0e0; /* Gray for selected button */
+    color: #666;
+    cursor: default;
+}
+
+.select-button.selected-button:hover {
+    background-color: #e0e0e0; /* No change on hover for selected */
+}
+
+
+.next-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ffda47; /* EduBirdie yellow */
+    border: none;
+    border-radius: 5px;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 30px; /* Space above the button */
+}
+
+.next-button:hover {
+    background-color: #ffc200;
+}
+
+
+.quality-guarantee {
+    flex: 1; /* Takes less space */
+    background-color: #f0f8ff; /* Light blue background */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align to top */
+    align-items: center;
+}
+
+.guarantee-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.guarantee-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    background-color: #ffe8b3; /* Light yellow background for fire icon */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.guarantee-icon img {
+    width: 30px; /* Adjust fire icon size */
+    height: 30px;
+}
+
+.guarantee-box h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.guarantee-box p {
+    font-size: 15px;
+    color: #777;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.guarantee-box ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 250px; /* Control list width */
+}
+
+.guarantee-box ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #555;
+}
+
+.guarantee-box ul li i {
+    color: #36c560; /* Green checkmark */
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+
+/* Chat Buttons (from previous request, ensure they are present or modified as needed) */
+.chat-support {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #36c560;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    z-index: 100; /* Ensure it's on top */
+}
+
+.chat-support:hover {
+    background-color: #2da450;
+}
+
+.chat-support img {
+    height: 24px;
+    width: 24px;
+}
+
+.chat-with-writers {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background-color: #d1e7ff; /* Light blue for "Chat with writers" */
+    color: #007bff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    z-index: 100;
+}
+
+.chat-with-writers:hover {
+    background-color: #c0dbf8;
+}
+
+.chat-with-writers img {
+    height: 24px;
+    width: 24px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .order-selection-container {
+        flex-direction: column;
+        margin-top: 20px;
+        width: 95%;
+        max-width: none;
+        min-height: auto;
+    }
+
+    .selection-options, .quality-guarantee {
+        padding: 30px;
+        align-items: center; /* Center content in column layout */
+    }
+
+    .selection-header {
+        text-align: center;
+    }
+
+    .order-card {
+        width: 90%; /* Make cards a bit narrower on smaller screens */
+        flex-wrap: wrap; /* Allow content to wrap if needed */
+        justify-content: center;
+        text-align: center;
+    }
+
+    .card-icon {
+        margin-right: 0; /* Remove margin from icon */
+        margin-bottom: 10px; /* Add bottom margin instead */
+    }
+
+    .card-content {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .select-button {
+        margin-top: 15px; /* Add space above button if content wraps */
+        width: 80%; /* Make button wider */
+    }
+
+    .next-button {
+        width: 90%; /* Match card width */
+    }
+
+    .guarantee-box {
+        width: 90%;
+    }
+
+    .chat-support, .chat-with-writers {
+        bottom: 20px;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .chat-support img, .chat-with-writers img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .chat-with-writers {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 70px; /* Push up to avoid overlapping with support chat */
+    }
+}
+
+@media (max-width: 600px) {
+    .order-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .select-button {
+        width: 100%;
+    }
+
+    .chat-with-writers {
+        left: 10px; /* Keep left chat button closer to edge */
+        transform: none;
+    }
+
+    .chat-support {
+        right: 10px; /* Keep right chat button closer to edge */
+    }
+}
+
+@media (max-width: 400px) {
+    .header {
+        padding-left: 5%;
+    }
+    .selection-options, .quality-guarantee {
+        padding: 20px;
+    }
+
+    .selection-header h2 {
+        font-size: 24px;
+    }
+    .order-card {
+        width: 100%;
+        padding: 15px;
+    }
+    .chat-with-writers, .chat-support {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+}

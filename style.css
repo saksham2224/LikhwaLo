@@ -496,3 +496,38 @@ body {
     margin-top: 10px;
   }
 }
+.login {
+ background: #42a5f5;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border: black;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.chat-support {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #36c560; /* Green chat button */
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.chat-support:hover {
+    background-color: #2da450;
+}
+
+.chat-support img {
+    height: 24px;
+    width: 24px;
+}
